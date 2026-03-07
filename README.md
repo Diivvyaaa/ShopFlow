@@ -1,17 +1,58 @@
-# React + Vite
+ShopFlow
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**ShopFlow — Full-Stack E-Commerce Admin Dashboard**
 
-Currently, two official plugins are available:
+ShopFlow is a full-stack e-commerce management platform built with React and Spring Boot. It features a dual-dashboard system where admins can manage products and process orders in real time, while customers can browse products, manage their cart, and track their orders live.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+**ShopFlow** is a full-stack e-commerce platform with real-time order management, built with **React + Vite** on the frontend and **Spring Boot + Spring Security** on the backend.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Features**
 
-## Expanding the ESLint configuration
+**Admin Portal**
+- Add, edit, and manage products with emoji icons, stock levels, and descriptions
+- Real-time order notifications — new customer orders appear within 4 seconds
+- Update order status (Pending → Processing → Shipped → Delivered)
+- Live Feed showing all store activity
+- Analytics dashboard with revenue and category charts
+- Drag & drop product reordering
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# -shopflow-frontend
+**Customer Portal**
+- Browse product catalog with search and category filters
+- Add to Cart or instant Buy Now on every product
+- 3-step checkout — delivery address, payment method (Card / UPI / Cash on Delivery), order review
+- My Orders with live status tracking and animated progress bar
+- Instant notifications when admin updates order status
+
+**Tech Stack**
+
+| Layer | Technology |
+|-------|-----------|
+| Frontend | React 18, Vite, Recharts |
+| Backend | Spring Boot 3, Spring Security, Spring Session |
+| Database | H2 (in-memory) |
+| Auth | Session-based (JSESSIONID cookie) |
+| Styling | Inline styles, Google Fonts (Syne + DM Sans) |
+
+**Demo Accounts**
+
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | admin@shopflow.com | admin123 |
+| Customer | aisha@gmail.com | pass123 |
+| Customer | raj@gmail.com | pass123 |
+
+**Getting Started**
+```bash
+# Backend — run in VS Code or IntelliJ
+cd shopflow-backend/shopflow-backend
+./mvnw spring-boot:run
+
+# Frontend
+cd shopflow-frontend
+npm install
+npm run dev
+
+# Open http://localhost:5173
+```
