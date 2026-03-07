@@ -1,0 +1,13 @@
+com\shopflow\config\WebSocketConfig.class
+com\shopflow\controller\OrderController.class
+com\shopflow\config\CorsConfig.class
+com\shopflow\controller\AnalyticsController.class
+com\shopflow\repository\ProductRepository.class
+com\shopflow\model\Product.class
+com\shopflow\repository\OrderRepository.class
+com\shopflow\service\OrderService.class
+com\shopflow\service\ProductService.class
+com\shopflow\config\CorsConfig$1.class
+com\shopflow\model\Order.class
+com\shopflow\controller\ProductController.class
+com\shopflow\shopflow_backend\ShopflowBackendApplication.class

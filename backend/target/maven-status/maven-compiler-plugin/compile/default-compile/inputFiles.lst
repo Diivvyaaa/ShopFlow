@@ -1,0 +1,12 @@
+C:\Users\divvz\Desktop\shopflow-backend\shopflow-backend\src\main\java\com\shopflow\config\CorsConfig.java
+C:\Users\divvz\Desktop\shopflow-backend\shopflow-backend\src\main\java\com\shopflow\config\WebSocketConfig.java
+C:\Users\divvz\Desktop\shopflow-backend\shopflow-backend\src\main\java\com\shopflow\controller\AnalyticsController.java
+C:\Users\divvz\Desktop\shopflow-backend\shopflow-backend\src\main\java\com\shopflow\controller\OrderController.java
+C:\Users\divvz\Desktop\shopflow-backend\shopflow-backend\src\main\java\com\shopflow\controller\ProductController.java
+C:\Users\divvz\Desktop\shopflow-backend\shopflow-backend\src\main\java\com\shopflow\model\Order.java
+C:\Users\divvz\Desktop\shopflow-backend\shopflow-backend\src\main\java\com\shopflow\model\Product.java
+C:\Users\divvz\Desktop\shopflow-backend\shopflow-backend\src\main\java\com\shopflow\repository\OrderRepository.java
+C:\Users\divvz\Desktop\shopflow-backend\shopflow-backend\src\main\java\com\shopflow\repository\ProductRepository.java
+C:\Users\divvz\Desktop\shopflow-backend\shopflow-backend\src\main\java\com\shopflow\service\OrderService.java
+C:\Users\divvz\Desktop\shopflow-backend\shopflow-backend\src\main\java\com\shopflow\service\ProductService.java
+C:\Users\divvz\Desktop\shopflow-backend\shopflow-backend\src\main\java\com\shopflow\shopflow_backend\ShopflowBackendApplication.java
