@@ -953,6 +953,7 @@ function CustomerCheckout({ th, cart, cartTotal, placeOrder, onBack, user }) {
   const [address, setAddress] = useState({ name: user.name||"", phone:"", line1:"", city:"", zip:"", country:"India" });
   const [payment, setPayment] = useState("card");
   const [card, setCard]       = useState({ number:"", expiry:"", cvv:"", holder:"" });
+  const [upiId, setUpiId]     = useState("");
 
   const setA = (k,v) => setAddress(a=>({...a,[k]:v}));
   const setC = (k,v) => setCard(c=>({...c,[k]:v}));
@@ -960,8 +961,11 @@ function CustomerCheckout({ th, cart, cartTotal, placeOrder, onBack, user }) {
   const fmtCard = (v) => v.replace(/\D/g,"").slice(0,16).replace(/(.{4})/g,"$1 ").trim();
   const fmtExp  = (v) => { const d=v.replace(/\D/g,"").slice(0,4); return d.length>2?d.slice(0,2)+"/"+d.slice(2):d; };
 
-  const addrOk  = address.name && address.phone && address.line1 && address.city && address.zip;
-  const payOk   = payment==="cod" || payment==="upi" || (card.number.replace(/\s/g,"").length===16 && card.expiry.length===5 && card.cvv.length>=3 && card.holder);
+  const addrOk = address.name && address.phone && address.line1 && address.city && address.zip;
+  // payOk — COD always ok, UPI needs an id, Card needs holder+number(min 12 digits)+expiry+cvv
+  const payOk  = payment==="cod"
+    || (payment==="upi" && upiId.trim().length > 3)
+    || (payment==="card" && card.holder && card.number.replace(/\s/g,"").length >= 12 && card.expiry.length === 5 && card.cvv.length >= 3);
 
   const handleConfirm = async () => {
     console.log("handleConfirm fired, cart:", cart);
@@ -1093,7 +1097,9 @@ function CustomerCheckout({ th, cart, cartTotal, placeOrder, onBack, user }) {
           {payment==="upi" && (
             <div style={{background:th.badge,borderRadius:12,padding:20,marginBottom:24}}>
               <label style={{display:"block",fontSize:12,fontWeight:600,color:th.muted,textTransform:"uppercase",letterSpacing:0.8,marginBottom:7}}>UPI ID</label>
-              <input placeholder="yourname@upi" style={{...th.input,width:"100%",padding:"10px 14px",borderRadius:10,fontSize:14,border:`1px solid ${th.border}`}}/>
+              <input value={upiId} onChange={e=>setUpiId(e.target.value)} placeholder="yourname@okhdfcbank / @ybl / @paytm"
+                style={{...th.input,width:"100%",padding:"10px 14px",borderRadius:10,fontSize:14,border:`1px solid ${upiId.length>3?"#22c55e":th.border}`}}/>
+              {upiId.length>0 && upiId.length<=3 && <div style={{fontSize:11,color:"#ef4444",marginTop:6}}>Enter a valid UPI ID</div>}
               <div style={{fontSize:12,color:th.muted,marginTop:8}}>You'll receive a payment request on your UPI app.</div>
             </div>
           )}
@@ -1103,11 +1109,21 @@ function CustomerCheckout({ th, cart, cartTotal, placeOrder, onBack, user }) {
             </div>
           )}
 
+          {!payOk && payment==="card" && (
+            <div style={{fontSize:12,color:"#f59e0b",marginBottom:10,padding:"8px 12px",background:"rgba(245,158,11,0.1)",borderRadius:8}}>
+              ⚠️ Please fill in all card details to continue.
+            </div>
+          )}
+          {!payOk && payment==="upi" && (
+            <div style={{fontSize:12,color:"#f59e0b",marginBottom:10,padding:"8px 12px",background:"rgba(245,158,11,0.1)",borderRadius:8}}>
+              ⚠️ Please enter your UPI ID to continue.
+            </div>
+          )}
           <div style={{display:"flex",gap:12}}>
             <button onClick={()=>setStep(1)} style={{flex:1,background:th.badge,border:`1px solid ${th.border}`,borderRadius:12,padding:12,color:th.muted,fontSize:14,cursor:"pointer",fontWeight:600}}>← Back</button>
-            <button onClick={()=>setStep(3)} disabled={!payOk}
-              style={{flex:2,background:payOk?"linear-gradient(135deg,#f97316,#ea580c)":"#444",border:"none",borderRadius:12,padding:12,color:"#fff",fontSize:15,fontWeight:700,cursor:payOk?"pointer":"not-allowed"}}>
-              Review Order →
+            <button onClick={()=>{ if(payOk) setStep(3); }} disabled={!payOk}
+              style={{flex:2,background:payOk?"linear-gradient(135deg,#f97316,#ea580c)":"rgba(100,100,100,0.4)",border:"none",borderRadius:12,padding:12,color:"#fff",fontSize:15,fontWeight:700,cursor:payOk?"pointer":"not-allowed",opacity:payOk?1:0.7}}>
+              {payOk ? "Review Order →" : "Fill details above ↑"}
             </button>
           </div>
         </div>
