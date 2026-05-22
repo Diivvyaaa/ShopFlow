@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "ShopflowBackendApplication",
+            "request": "launch",
+            "mainClass": "com.shopflow.shopflow_backend.ShopflowBackendApplication"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ShopflowBackendApplication<shopflow-backend>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.shopflow.shopflow_backend.ShopflowBackendApplication",
+            "projectName": "shopflow-backend",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
