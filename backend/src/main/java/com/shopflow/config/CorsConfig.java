@@ -21,6 +21,7 @@ public class CorsConfig {
                         "https://shop-flow-bice.vercel.app"
                     )
                     .allowedMethods("GET", "POST", "PUT", "DELETE");
+                     .allowCredentials(true);
             }
         };
     }
