@@ -16,7 +16,9 @@ public class CorsConfig {
                 registry.addMapping("/api/**")
                     .allowedOrigins(
                         "http://localhost:3000",
-                        "http://localhost:5173"
+                        "http://localhost:5173",
+                        "https://shopflow-production-9b2c.up.railway.app",
+                        "https://shop-flow-bice.vercel.app"
                     )
                     .allowedMethods("GET", "POST", "PUT", "DELETE");
             }
