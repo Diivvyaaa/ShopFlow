@@ -17,12 +17,12 @@ public class CorsConfig {
                     .allowedOrigins(
                         "http://localhost:3000",
                         "http://localhost:5173",
-                        "https://shopflow-production-9b2c.up.railway.app",
+                        "https://shopflow-production-c62c.up.railway.app",
                         "https://shop-flow-bice.vercel.app"
                     )
-                    .allowedMethods("GET", "POST", "PUT", "DELETE");
+                    .allowedMethods("GET", "POST", "PUT", "DELETE")
                     .allowCredentials(true);
-            }       
+            }
         };
     }
 }
