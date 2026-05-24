@@ -17,7 +17,7 @@ public class CorsConfig {
                     .allowedOrigins(
                         "http://localhost:3000",
                         "http://localhost:5173",
-                        "https://shopflow-production-9b2c.up.railway.app",
+                        "https://shopflow-production-268d.up.railway.app",
                         "https://shop-flow-drab.vercel.app",
                         "https://shopflowecomm.netlify.app"
                     )
