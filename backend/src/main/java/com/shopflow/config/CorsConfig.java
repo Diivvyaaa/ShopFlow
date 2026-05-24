@@ -20,7 +20,7 @@ public class CorsConfig {
                         "https://shopflow-production-9b2c.up.railway.app",
                         "https://shop-flow-bice.vercel.app"
                     )
-                    .allowedMethods("GET", "POST", "PUT", "DELETE");
+                    .allowedMethods("GET", "POST", "PUT", "DELETE")
                      .allowCredentials(true);
             }
         };
