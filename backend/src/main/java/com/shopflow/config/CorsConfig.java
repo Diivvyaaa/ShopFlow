@@ -13,16 +13,10 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**")
-                    .allowedOrigins(
-                        "http://localhost:3000",
-                        "http://localhost:5173",
-                        "https://shopflow-production-268d.up.railway.app",
-                        "https://shop-flow-drab.vercel.app",
-                        "https://shopflowecomm.netlify.app"
-                    )
-                    .allowedMethods("GET", "POST", "PUT", "DELETE")
-                     .allowCredentials(true);
+                registry.addMapping("/**")
+                    .allowedOriginPatterns("*")
+                    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                    .allowCredentials(true);
             }
         };
     }
