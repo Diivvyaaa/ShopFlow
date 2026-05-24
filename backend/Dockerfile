@@ -1,19 +1,12 @@
-FROM eclipse-temurin:17-jdk-jammy AS build
+FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /workspace/app
 
-# Copy maven executable and pom
-COPY mvnw .
-COPY .mvn .mvn
 COPY pom.xml .
+RUN mvn dependency:go-offline
 
-# Build all dependencies
-RUN ./mvnw dependency:go-offline
-
-# Copy source and build
 COPY src src
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
-# Production image
 FROM eclipse-temurin:17-jre-jammy
 VOLUME /tmp
 WORKDIR /app
