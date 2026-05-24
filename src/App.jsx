@@ -6,7 +6,7 @@ import {
 } from "recharts";
 
 // ─── API Helper ───────────────────────────────────────────────────────────────
-const BASE = "https://shopflow-production-9b2c.up.railway.app";
+const BASE = "https://shopflow-production-c62c.up.railway.app";
 const api = {
   get:    (url)       => fetch(BASE + url, { credentials: "include" }),
   post:   (url, data) => fetch(BASE + url, { method: "POST",   credentials: "include", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) }),
