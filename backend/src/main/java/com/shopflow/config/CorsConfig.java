@@ -18,7 +18,7 @@ public class CorsConfig {
                         "http://localhost:3000",
                         "http://localhost:5173",
                         "https://shopflow-production-9b2c.up.railway.app",
-                        "https://shop-flow-bice.vercel.app"
+                        "https://shopflowecomm.netlify.app"
                     )
                     .allowedMethods("GET", "POST", "PUT", "DELETE")
                      .allowCredentials(true);
