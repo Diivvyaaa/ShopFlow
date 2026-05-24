@@ -6,7 +6,7 @@ import {
 } from "recharts";
 
 // ─── API Helper ───────────────────────────────────────────────────────────────
-const BASE = import.meta.env.VITE_API_URL || "https://shopflow-production-268d.up.railway.app";
+const BASE = import.meta.env.VITE_API_URL || "https://shopflow-sk3i.onrender.com";
 const api = {
   get:    (url)       => fetch(BASE + url, { credentials: "include" }),
   post:   (url, data) => fetch(BASE + url, { method: "POST",   credentials: "include", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) }),
