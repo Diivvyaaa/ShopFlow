@@ -1,15 +1,14 @@
 package com.shopflow.model;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "orders")
+@Document(collection = "orders")
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     private String product;
     private Double total;
@@ -24,8 +23,8 @@ public class Order {
 
     // ── Getters & Setters ─────────────────────────────────────────────────────
 
-    public Long getId()                     { return id; }
-    public void setId(Long id)              { this.id = id; }
+    public String getId()                     { return id; }
+    public void setId(String id)              { this.id = id; }
 
     public String getProduct()              { return product; }
     public void setProduct(String product)  { this.product = product; }

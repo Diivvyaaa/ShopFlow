@@ -24,7 +24,7 @@ public class ProductController {
     @PutMapping("/admin/{id}/stock")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> updateStock(
-            @PathVariable Long id,
+            @PathVariable String id,
             @RequestBody Map<String, Integer> body) {
         return products.findById(id).map(p -> {
             p.setStock(body.get("stock"));

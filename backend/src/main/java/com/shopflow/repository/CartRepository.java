@@ -1,11 +1,11 @@
 package com.shopflow.repository;
 
 import com.shopflow.model.CartItem;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
-public interface CartRepository extends JpaRepository<CartItem, Long> {
+public interface CartRepository extends MongoRepository<CartItem, String> {
     List<CartItem> findByCustomerId(String customerId);
 
     @Transactional

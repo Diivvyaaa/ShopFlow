@@ -77,7 +77,7 @@ public class OrderController {
     public ResponseEntity<?> allOrders() {
         try {
             List<Order> all = orders.findAll();
-            all.sort((a, b) -> Long.compare(b.getId(), a.getId()));
+            all.sort((a, b) -> b.getId().compareTo(a.getId()));
             return ResponseEntity.ok(all);
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,7 +87,7 @@ public class OrderController {
 
     @PutMapping("/admin/{id}/status")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> updateStatus(@PathVariable Long id, @RequestBody Map<String, String> body) {
+    public ResponseEntity<?> updateStatus(@PathVariable String id, @RequestBody Map<String, String> body) {
         return orders.findById(id).map(order -> {
             order.setStatus(body.get("status"));
             return ResponseEntity.ok(orders.save(order));

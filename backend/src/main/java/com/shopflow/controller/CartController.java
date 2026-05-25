@@ -42,7 +42,7 @@ public class CartController {
     @PostMapping
     public ResponseEntity<?> addItem(@RequestBody Map<String, Object> body, Authentication auth) {
         User user = getUser(auth);
-        Long productId = Long.parseLong(body.get("productId").toString());
+        String productId = body.get("productId").toString();
         int  quantity  = Integer.parseInt(body.get("quantity").toString());
 
         Product product = products.findById(productId).orElse(null);
@@ -68,7 +68,7 @@ public class CartController {
 
     // PUT /api/cart/{id} — update quantity { quantity }
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateItem(@PathVariable Long id, @RequestBody Map<String, Integer> body) {
+    public ResponseEntity<?> updateItem(@PathVariable String id, @RequestBody Map<String, Integer> body) {
         return cart.findById(id).map(item -> {
             item.setQuantity(body.get("quantity"));
             return ResponseEntity.ok(cart.save(item));
@@ -77,7 +77,7 @@ public class CartController {
 
     // DELETE /api/cart/{id} — remove one item
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> removeItem(@PathVariable Long id) {
+    public ResponseEntity<?> removeItem(@PathVariable String id) {
         cart.deleteById(id);
         return ResponseEntity.ok().build();
     }

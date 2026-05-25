@@ -16,7 +16,7 @@
   <artifactId>shopflow-backend</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <properties>
-    <java.version>25</java.version>
+    <java.version>21</java.version>
   </properties>
   <dependencies>
     <!-- Web -->
@@ -37,11 +37,9 @@
     <dependency><groupId>org.springframework.session</groupId>
       <artifactId>spring-session-core</artifactId></dependency>
 
-    <!-- JPA + H2 -->
+    <!-- MongoDB -->
     <dependency><groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId></dependency>
-    <dependency><groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId><scope>runtime</scope></dependency>
+      <artifactId>spring-boot-starter-data-mongodb</artifactId></dependency>
 
     <!-- Test -->
     <dependency><groupId>org.springframework.boot</groupId>
@@ -54,7 +52,7 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.11.0</version>
         <configuration>
-          <release>25</release>
+          <release>21</release>
         </configuration>
       </plugin>
       <plugin>
